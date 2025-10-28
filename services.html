@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - PLUGNATION STUDIOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1><i class="fas fa-crown"></i> PLUGNATION STUDIOS</h1>
+                <p>Professional Web Services & Business Solutions</p>
+                <div class="server-status">
+                    <span class="status-dot online"></span>
+                    <span>Services Active</span>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>DASHBOARD</span>
+                </a>
+                <a href="/services" class="nav-link active">
+                    <i class="fas fa-cogs"></i>
+                    <span>SERVICES</span>
+                </a>
+                <a href="/pricing" class="nav-link">
+                    <i class="fas fa-tag"></i>
+                    <span>PRICING</span>
+                </a>
+                <a href="/contact" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>CONTACT</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Services</div>
+                        <div class="user-role">PLUGNATION STUDIOS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Enhanced Header -->
+            <div class="header">
+                <div class="header-left">
+                    <h2>Professional Services</h2>
+                    <div class="breadcrumb">
+                        <span>Home</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-active">Services</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <div class="time-display" id="live-clock">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Transform Your Digital Presence</h1>
+                    <p>Professional web development, custom dashboards, and business solutions tailored for Kenyan businesses. Powered by cutting-edge technology and street-smart strategies.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Services Grid -->
+            <div class="services-grid">
+                <!-- Web Development -->
+                <div class="service-card featured">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="service-badge">Most Popular</div>
+                    </div>
+                    <h3>Website Development</h3>
+                    <p class="service-description">Professional, mobile-responsive websites that convert visitors into customers. Built with modern technologies and SEO-optimized for maximum visibility.</p>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Custom 5-Page Website</li>
+                            <li><i class="fas fa-check"></i> Mobile-First Responsive Design</li>
+                            <li><i class="fas fa-check"></i> SEO Optimization</li>
+                            <li><i class="fas fa-check"></i> Contact Forms & Integration</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-check"></i> Google Analytics Setup</li>
+                            <li><i class="fas fa-check"></i> Basic SSL Certificate</li>
+                            <li><i class="fas fa-check"></i> 1 Month Free Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <div class="price-main">From KSh 8,000</div>
+                        <div class="price-note">One-time development fee</div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn-primary" onclick="showContactForm('Website Development')">
+                            <i class="fas fa-calendar"></i> Get Quote
+                        </button>
+                        <button class="btn-secondary" onclick="showServiceDetails('web-dev')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- E-commerce Solutions -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <h3>E-commerce Store</h3>
+                    <p class="service-description">Complete online store solutions with product management, payment gateways, and inventory tracking. Start selling online in days, not months.</p>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full Online Store Setup</li>
+                            <li><i class="fas fa-check"></i> Product Catalog (Up to 50 products)</li>
+                            <li><i class="fas fa-check"></i> M-Pesa & Card Payment Integration</li>
+                            <li><i class="fas fa-check"></i> Inventory Management System</li>
+                            <li><i class="fas fa-check"></i> Order Tracking & Management</li>
+                            <li><i class="fas fa-check"></i> Customer Accounts</li>
+                            <li><i class="fas fa-check"></i> Shipping & Tax Configuration</li>
+                            <li><i class="fas fa-check"></i> 3 Months Free Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <div class="price-main">From KSh 25,000</div>
+                        <div class="price-note">+ Payment gateway fees</div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn-primary" onclick="showContactForm('E-commerce Store')">
+                            <i class="fas fa-calendar"></i> Get Quote
+                        </button>
+                        <button class="btn-secondary" onclick="showServiceDetails('ecommerce')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business Dashboards -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <h3>Business Dashboard</h3>
+                    <p class="service-description">Custom data visualization dashboards that transform your business data into actionable insights. Monitor performance, track KPIs, and make data-driven decisions.</p>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Custom Dashboard Design</li>
+                            <li><i class="fas fa-check"></i> Real-time Data Visualization</li>
+                            <li><i class="fas fa-check"></i> Client Management System</li>
+                            <li><i class="fas fa-check"></i> Analytics & Reporting</li>
+                            <li><i class="fas fa-check"></i> Automated Reports</li>
+                            <li><i class="fas fa-check"></i> Multi-user Access</li>
+                            <li><i class="fas fa-check"></i> Data Export Capabilities</li>
+                            <li><i class="fas fa-check"></i> 6 Months Free Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <div class="price-main">From KSh 35,000</div>
+                        <div class="price-note">Custom pricing based on features</div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn-primary" onclick="showContactForm('Business Dashboard')">
+                            <i class="fas fa-calendar"></i> Get Quote
+                        </button>
+                        <button class="btn-secondary" onclick="showServiceDetails('dashboard')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Maintenance & Support -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                    </div>
+                    <h3>Website Maintenance</h3>
+                    <p class="service-description">Keep your website running smoothly with our comprehensive maintenance plans. Regular updates, security monitoring, and technical support.</p>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Regular Security Updates</li>
+                            <li><i class="fas fa-check"></i> 24/7 Website Monitoring</li>
+                            <li><i class="fas fa-check"></i> Daily Backups</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> Content Updates (up to 5/month)</li>
+                            <li><i class="fas fa-check"></i> SSL Certificate Management</li>
+                            <li><i class="fas fa-check"></i> Emergency Support</li>
+                            <li><i class="fas fa-check"></i> Monthly Performance Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <div class="price-main">From KSh 2,500/month</div>
+                        <div class="price-note">Annual contract, cancel anytime</div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn-primary" onclick="showContactForm('Website Maintenance')">
+                            <i class="fas fa-calendar"></i> Start Now
+                        </button>
+                        <button class="btn-secondary" onclick="showServiceDetails('maintenance')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p class="service-description">Comprehensive digital marketing strategies to increase your online visibility, generate leads, and grow your business in the Kenyan market.</p>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Social Media Management</li>
+                            <li><i class="fas fa-check"></i> SEO Strategy & Implementation</li>
+                            <li><i class="fas fa-check"></i> Google Ads Management</li>
+                            <li><i class="fas fa-check"></i> Content Creation</li>
+                            <li><i class="fas fa-check"></i> Email Marketing Campaigns</li>
+                            <li><i class="fas fa-check"></i> Analytics & Performance Tracking</li>
+                            <li><i class="fas fa-check"></i> Monthly Strategy Reports</li>
+                            <li><i class="fas fa-check"></i> Competitor Analysis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <div class="price-main">From KSh 15,000/month</div>
+                        <div class="price-note">3-month minimum commitment</div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn-primary" onclick="showContactForm('Digital Marketing')">
+                            <i class="fas fa-calendar"></i> Get Started
+                        </button>
+                        <button class="btn-secondary" onclick="showServiceDetails('marketing')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Solutions -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <h3>Custom Web Applications</h3>
+                    <p class="service-description">Bespoke web applications tailored to your specific business needs. From CRM systems to inventory management and beyond.</p>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Requirements Analysis</li>
+                            <li><i class="fas fa-check"></i> Custom Software Development</li>
+                            <li><i class="fas fa-check"></i> Database Design & Implementation</li>
+                            <li><i class="fas fa-check"></i> API Integration</li>
+                            <li><i class="fas fa-check"></i> User Training & Documentation</li>
+                            <li><i class="fas fa-check"></i> Ongoing Maintenance & Support</li>
+                            <li><i class="fas fa-check"></i> Scalable Architecture</li>
+                            <li><i class="fas fa-check"></i> 1 Year Technical Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <div class="price-main">Custom Pricing</div>
+                        <div class="price-note">Based on project scope</div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn-primary" onclick="showContactForm('Custom Web Application')">
+                            <i class="fas fa-calendar"></i> Discuss Project
+                        </button>
+                        <button class="btn-secondary" onclick="showServiceDetails('custom')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Section -->
+            <div class="process-section">
+                <h2>Our Development Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Discovery & Planning</h3>
+                            <p>We analyze your business needs, target audience, and goals to create a comprehensive project plan.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Design & Prototyping</h3>
+                            <p>Our designers create mockups and prototypes for your approval before development begins.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Development & Testing</h3>
+                            <p>We build your solution using modern technologies and thoroughly test every feature.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Launch & Support</h3>
+                            <p>We deploy your project and provide ongoing support to ensure long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Business?</h2>
+                    <p>Get a free consultation and project quote. No obligations, just professional advice.</p>
+                    <div class="cta-actions">
+                        <button class="btn-primary large" onclick="showContactForm('General Inquiry')">
+                            <i class="fas fa-comments"></i> Get Free Consultation
+                        </button>
+                        <button class="btn-secondary large" onclick="window.location.href='/pricing'">
+                            <i class="fas fa-tag"></i> View Pricing
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Details Modal -->
+    <div id="service-details-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="service-details-title">Service Details</h3>
+                <span class="close" onclick="closeModal('service-details-modal')">&times;</span>
+            </div>
+            <div class="modal-body" id="service-details-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contact-service-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="contact-service-title">Get Quote</h3>
+                <span class="close" onclick="closeModal('contact-service-modal')">&times;</span>
+            </div>
+            <form id="contact-service-form" class="modal-form">
+                <input type="hidden" id="service-type" name="service-type">
+                <div class="form-group">
+                    <label for="contact-name">Your Name *</label>
+                    <input type="text" id="contact-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email Address *</label>
+                    <input type="email" id="contact-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-phone">Phone Number</label>
+                    <input type="tel" id="contact-phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="contact-company">Company Name</label>
+                    <input type="text" id="contact-company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Project Details *</label>
+                    <textarea id="contact-message" name="message" rows="4" required placeholder="Tell us about your project requirements..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('contact-service-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Send Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Services Page Specific Styles */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .service-card.featured:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .service-badge {
+            background: var(--accent);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .service-description {
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            margin-bottom: 25px;
+        }
+
+        .service-features h4 {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .service-features ul {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li i {
+            color: var(--success);
+            font-size: 14px;
+        }
+
+        .service-pricing {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        .price-main {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .price-note {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .service-actions .btn-primary,
+        .service-actions .btn-secondary {
+            flex: 1;
+        }
+
+        .process-section {
+            margin-bottom: 60px;
+        }
+
+        .process-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background: var(--dark-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin: 0 auto 20px auto;
+        }
+
+        .step-content h3 {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .step-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-card), #1f1f3d);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .cta-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .cta-content p {
+            font-size: 1.2em;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 1.1em;
+        }
+
+        .modal-content.large {
+            max-width: 800px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.featured {
+                transform: none;
+            }
+
+            .service-actions {
+                flex-direction: column;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-large {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+
+    <script>
+        // Live Clock
+        function startLiveClock() {
+            const updateClock = () => {
+                const now = new Date();
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const day = days[now.getDay()];
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                document.getElementById('live-clock').textContent = 
+                    `${day} ${hours}:${minutes}:${seconds}`;
+            };
+            
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // Service Details Modal
+        function showServiceDetails(serviceType) {
+            const details = {
+                'web-dev': {
+                    title: 'Website Development',
+                    content: `
+                        <h4>Complete Web Development Solution</h4>
+                        <p>We create stunning, responsive websites that work perfectly on all devices. Our development process ensures your website not only looks great but also performs exceptionally well.</p>
+                        
+                        <div class="feature-details">
+                            <h5>Technical Features:</h5>
+                            <ul>
+                                <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                                <li>Mobile-First Responsive Design</li>
+                                <li>Cross-browser Compatibility</li>
+                                <li>SEO-optimized Structure</li>
+                                <li>Fast Loading Times (Google PageSpeed optimized)</li>
+                                <li>Security Best Practices</li>
+                            </ul>
+                        </div>
+
+                        <div class="process-details">
+                            <h5>Our Process:</h5>
+                            <ol>
+                                <li><strong>Discovery:</strong> We understand your business and goals</li>
+                                <li><strong>Design:</strong> Create mockups and get your approval</li>
+                                <li><strong>Development:</strong> Build your website with modern technologies</li>
+                                <li><strong>Testing:</strong> Thorough testing on all devices and browsers</li>
+                                <li><strong>Launch:</strong> Deploy your website and provide training</li>
+                            </ol>
+                        </div>
+
+                        <div class="timeline">
+                            <h5>Project Timeline: 2-3 weeks</h5>
+                            <p>Includes design, development, testing, and deployment phases.</p>
+                        </div>
+                    `
+                },
+                'ecommerce': {
+                    title: 'E-commerce Store Development',
+                    content: `
+                        <h4>Complete Online Store Solution</h4>
+                        <p>Launch your online store with our comprehensive e-commerce solutions. We handle everything from product setup to payment integration.</p>
+                        
+                        <div class="feature-details">
+                            <h5>E-commerce Features:</h5>
+                            <ul>
+                                <li>Product Catalog Management</li>
+                                <li>Shopping Cart & Checkout</li>
+                                <li>M-Pesa & Credit Card Payments</li>
+                                <li>Inventory Tracking</li>
+                                <li>Order Management System</li>
+                                <li>Customer Accounts & Profiles</li>
+                                <li>Shipping & Tax Calculations</li>
+                                <li>Sales Reports & Analytics</li>
+                            </ul>
+                        </div>
+
+                        <div class="payment-options">
+                            <h5>Payment Options:</h5>
+                            <ul>
+                                <li>M-Pesa Integration</li>
+                                <li>Credit/Debit Cards</li>
+                                <li>PayPal (International)</li>
+                                <li>Bank Transfers</li>
+                                <li>Cash on Delivery Setup</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline">
+                            <h5>Project Timeline: 4-6 weeks</h5>
+                            <p>Includes planning, development, payment integration, and testing.</p>
+                        </div>
+                    `
+                },
+                'dashboard': {
+                    title: 'Business Dashboard Development',
+                    content: `
+                        <h4>Custom Business Intelligence Dashboard</h4>
+                        <p>Transform your business data into actionable insights with our custom dashboard solutions.</p>
+                        
+                        <div class="feature-details">
+                            <h5>Dashboard Features:</h5>
+                            <ul>
+                                <li>Real-time Data Visualization</li>
+                                <li>Custom KPIs and Metrics</li>
+                                <li>Interactive Charts and Graphs</li>
+                                <li>Client Management System</li>
+                                <li>Automated Reporting</li>
+                                <li>Multi-user Access Control</li>
+                                <li>Data Export Capabilities</li>
+                                <li>Mobile-responsive Design</li>
+                            </ul>
+                        </div>
+
+                        <div class="integration-options">
+                            <h5>Integration Options:</h5>
+                            <ul>
+                                <li>Google Analytics</li>
+                                <li>Social Media APIs</li>
+                                <li>Payment Processors</li>
+                                <li>CRM Systems</li>
+                                <li>Custom Databases</li>
+                                <li>Third-party APIs</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline">
+                            <h5>Project Timeline: 6-8 weeks</h5>
+                            <p>Includes requirements analysis, design, development, and deployment.</p>
+                        </div>
+                    `
+                }
+            };
+
+            const service = details[serviceType] || {
+                title: 'Service Details',
+                content: '<p>Detailed information about this service is coming soon.</p>'
+            };
+
+            document.getElementById('service-details-title').textContent = service.title;
+            document.getElementById('service-details-content').innerHTML = service.content;
+            document.getElementById('service-details-modal').style.display = 'block';
+        }
+
+        // Contact Form Modal
+        function showContactForm(serviceType) {
+            document.getElementById('service-type').value = serviceType;
+            document.getElementById('contact-service-title').textContent = `Get Quote - ${serviceType}`;
+            document.getElementById('contact-service-modal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Handle Contact Form Submission
+        document.getElementById('contact-service-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            try {
+                // Here you would typically send the data to your server
+                // For now, we'll just show a success message
+                closeModal('contact-service-modal');
+                alert('Thank you for your inquiry! We will contact you within 24 hours.');
+                this.reset();
+            } catch (error) {
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            startLiveClock();
+        });
+    </script>
+</body>
+</html>

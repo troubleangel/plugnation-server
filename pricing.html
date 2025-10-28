@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - PLUGNATION STUDIOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1><i class="fas fa-crown"></i> PLUGNATION STUDIOS</h1>
+                <p>Affordable Excellence for Kenyan Businesses</p>
+                <div class="server-status">
+                    <span class="status-dot online"></span>
+                    <span>Ready to Serve</span>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>DASHBOARD</span>
+                </a>
+                <a href="/services" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>SERVICES</span>
+                </a>
+                <a href="/pricing" class="nav-link active">
+                    <i class="fas fa-tag"></i>
+                    <span>PRICING</span>
+                </a>
+                <a href="/contact" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>CONTACT</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Pricing</div>
+                        <div class="user-role">Transparent & Fair</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Enhanced Header -->
+            <div class="header">
+                <div class="header-left">
+                    <h2>Simple, Transparent Pricing</h2>
+                    <div class="breadcrumb">
+                        <span>Home</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-active">Pricing</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <div class="time-display" id="live-clock">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Toggle -->
+            <div class="pricing-toggle-section">
+                <div class="toggle-container">
+                    <span class="toggle-label">Monthly</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pricing-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label active">Annual (Save 20%)</span>
+                </div>
+                <div class="toggle-savings">
+                    <i class="fas fa-gift"></i>
+                    Get 2 months free with annual billing
+                </div>
+            </div>
+
+            <!-- Main Pricing Grid -->
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>STARTER</h3>
+                        <div class="pricing-price">
+                            <div class="price-amount" data-monthly="2500" data-annual="24000">KSh 2,500</div>
+                            <div class="price-period" data-monthly="/month" data-annual="/year">/project</div>
+                        </div>
+                        <p class="pricing-description">Perfect for small businesses and personal projects</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="feature-group">
+                            <h4>Core Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 3-Page Custom Website</li>
+                                <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
+                                <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                                <li><i class="fas fa-check"></i> Contact Form Integration</li>
+                                <li><i class="fas fa-check"></i> Social Media Links</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-group">
+                            <h4>Support & Maintenance</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1 Month Free Support</li>
+                                <li><i class="fas fa-check"></i> Basic Training</li>
+                                <li><i class="fas fa-times"></i> No Ongoing Maintenance</li>
+                                <li><i class="fas fa-times"></i> No Priority Support</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-group">
+                            <h4>Delivery</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 5-7 Business Days</li>
+                                <li><i class="fas fa-check"></i> 2 Revisions Included</li>
+                                <li><i class="fas fa-times"></i> No Rush Delivery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-popularity">
+                        <div class="popularity-badge">
+                            <i class="fas fa-user"></i>
+                            Great for Startups
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-actions">
+                        <button class="btn-secondary full-width" onclick="selectPlan('starter')">
+                            <i class="fas fa-shopping-cart"></i> Get Started
+                        </button>
+                        <button class="btn-text full-width" onclick="showPlanDetails('starter')">
+                            <i class="fas fa-info-circle"></i> Plan Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business Plan (Most Popular) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="pricing-header">
+                        <h3>BUSINESS</h3>
+                        <div class="pricing-price">
+                            <div class="price-amount" data-monthly="8000" data-annual="76800">KSh 8,000</div>
+                            <div class="price-period" data-monthly="/month" data-annual="/year">/project</div>
+                        </div>
+                        <p class="pricing-description">Ideal for growing businesses and professional services</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="feature-group">
+                            <h4>Enhanced Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 5-Page Custom Website</li>
+                                <li><i class="fas fa-check"></i> Advanced Mobile Optimization</li>
+                                <li><i class="fas fa-check"></i> Comprehensive SEO Setup</li>
+                                <li><i class="fas fa-check"></i> Contact Form + Lead Capture</li>
+                                <li><i class="fas fa-check"></i> Social Media Integration</li>
+                                <li><i class="fas fa-check"></i> Basic Analytics Dashboard</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-group">
+                            <h4>Support & Maintenance</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 3 Months Free Support</li>
+                                <li><i class="fas fa-check"></i> Comprehensive Training</li>
+                                <li><i class="fas fa-check"></i> 3 Months Maintenance</li>
+                                <li><i class="fas fa-check"></i> Priority Email Support</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-group">
+                            <h4>Delivery</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 7-10 Business Days</li>
+                                <li><i class="fas fa-check"></i> 3 Revisions Included</li>
+                                <li><i class="fas fa-check"></i> Rush Delivery Available</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-popularity">
+                        <div class="popularity-badge best-value">
+                            <i class="fas fa-star"></i>
+                            Best Value
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-actions">
+                        <button class="btn-primary full-width" onclick="selectPlan('business')">
+                            <i class="fas fa-rocket"></i> Get Business Plan
+                        </button>
+                        <button class="btn-text full-width" onclick="showPlanDetails('business')">
+                            <i class="fas fa-chart-line"></i> See ROI Calculator
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>PROFESSIONAL</h3>
+                        <div class="pricing-price">
+                            <div class="price-amount" data-monthly="15000" data-annual="144000">KSh 15,000</div>
+                            <div class="price-period" data-monthly="/month" data-annual="/year">/project</div>
+                        </div>
+                        <p class="pricing-description">For established businesses needing advanced features</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="feature-group">
+                            <h4>Premium Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Unlimited Pages Website</li>
+                                <li><i class="fas fa-check"></i> E-commerce Ready</li>
+                                <li><i class="fas fa-check"></i> Advanced SEO + Local SEO</li>
+                                <li><i class="fas fa-check"></i> Custom Contact Forms</li>
+                                <li><i class="fas fa-check"></i> Social Media Automation</li>
+                                <li><i class="fas fa-check"></i> Advanced Analytics Dashboard</li>
+                                <li><i class="fas fa-check"></i> Payment Gateway Setup</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-group">
+                            <h4>Support & Maintenance</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 6 Months Free Support</li>
+                                <li><i class="fas fa-check"></i> Premium Training</li>
+                                <li><i class="fas fa-check"></i> 6 Months Maintenance</li>
+                                <li><i class="fas fa-check"></i> Priority Phone Support</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-group">
+                            <h4>Delivery</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 10-14 Business Days</li>
+                                <li><i class="fas fa-check"></i> Unlimited Revisions</li>
+                                <li><i class="fas fa-check"></i> Priority Rush Delivery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-popularity">
+                        <div class="popularity-badge">
+                            <i class="fas fa-crown"></i>
+                            Premium Choice
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-actions">
+                        <button class="btn-secondary full-width" onclick="selectPlan('professional')">
+                            <i class="fas fa-gem"></i> Go Professional
+                        </button>
+                        <button class="btn-text full-width" onclick="showPlanDetails('professional')">
+                            <i class="fas fa-crown"></i> Premium Features
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise Solution -->
+            <div class="enterprise-section">
+                <div class="enterprise-content">
+                    <div class="enterprise-info">
+                        <h3>ENTERPRISE SOLUTIONS</h3>
+                        <h2>Need Something Custom?</h2>
+                        <p>For large businesses, government organizations, and complex projects requiring custom development, advanced integrations, and dedicated support.</p>
+                        
+                        <div class="enterprise-features">
+                            <div class="enterprise-feature">
+                                <i class="fas fa-server"></i>
+                                <span>Custom Web Applications</span>
+                            </div>
+                            <div class="enterprise-feature">
+                                <i class="fas fa-network-wired"></i>
+                                <span>API Integrations</span>
+                            </div>
+                            <div class="enterprise-feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Advanced Security</span>
+                            </div>
+                            <div class="enterprise-feature">
+                                <i class="fas fa-headset"></i>
+                                <span>Dedicated Support</span>
+                            </div>
+                        </div>
+                        
+                        <div class="enterprise-actions">
+                            <button class="btn-primary large" onclick="showContactForm('enterprise')">
+                                <i class="fas fa-calendar"></i> Schedule Consultation
+                            </button>
+                            <button class="btn-secondary large" onclick="showEnterpriseDetails()">
+                                <i class="fas fa-file-contract"></i> View Case Studies
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="enterprise-pricing">
+                        <div class="pricing-callout">
+                            <div class="callout-title">Custom Pricing</div>
+                            <div class="callout-subtitle">Tailored to your requirements</div>
+                            <div class="callout-features">
+                                <div class="callout-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Project Analysis</span>
+                                </div>
+                                <div class="callout-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Custom Quote</span>
+                                </div>
+                                <div class="callout-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Flexible Payment Plans</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="addons-section">
+                <h2>Add-on Services</h2>
+                <p class="section-subtitle">Enhance your project with these additional services</p>
+                
+                <div class="addons-grid">
+                    <div class="addon-card">
+                        <div class="addon-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>SEO Optimization</h4>
+                        <p class="addon-description">Improve your search engine rankings and online visibility</p>
+                        <div class="addon-pricing">
+                            <span class="addon-price">KSh 3,000</span>
+                            <span class="addon-period">/month</span>
+                        </div>
+                        <button class="btn-text" onclick="selectAddon('seo')">Add to Plan</button>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Website Maintenance</h4>
+                        <p class="addon-description">Keep your website updated, secure, and running smoothly</p>
+                        <div class="addon-pricing">
+                            <span class="addon-price">KSh 2,500</span>
+                            <span class="addon-period">/month</span>
+                        </div>
+                        <button class="btn-text" onclick="selectAddon('maintenance')">Add to Plan</button>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h4>Social Media Management</h4>
+                        <p class="addon-description">Manage your social media presence and engage with customers</p>
+                        <div class="addon-pricing">
+                            <span class="addon-price">KSh 5,000</span>
+                            <span class="addon-period">/month</span>
+                        </div>
+                        <button class="btn-text" onclick="selectAddon('social')">Add to Plan</button>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Marketing</h4>
+                        <p class="addon-description">Create and send professional email campaigns to your customers</p>
+                        <div class="addon-pricing">
+                            <span class="addon-price">KSh 2,000</span>
+                            <span class="addon-period">/month</span>
+                        </div>
+                        <button class="btn-text" onclick="selectAddon('email')">Add to Plan</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="payment-section">
+                <h2>Flexible Payment Options</h2>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>M-Pesa</h4>
+                        <p>Instant payment via M-Pesa</p>
+                        <div class="payment-details">
+                            <strong>Till Number: 123456</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4>Bank Transfer</h4>
+                        <p>Direct bank transfer</p>
+                        <div class="payment-details">
+                            <strong>Account details provided after order</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Installment Plan</h4>
+                        <p>Pay in 2-3 installments</p>
+                        <div class="payment-details">
+                            <strong>50% deposit, balance on completion</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Pay on Delivery</h4>
+                        <p>Pay after project completion</p>
+                        <div class="payment-details">
+                            <strong>Available for trusted clients</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How long does a typical project take?</h4>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Starter plans: 5-7 business days<br>Business plans: 7-10 business days<br>Professional plans: 10-14 business days</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you offer ongoing support?</h4>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! All plans include free support periods. We also offer monthly maintenance plans starting at KSh 2,500/month.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I upgrade my plan later?</h4>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! You can upgrade your plan at any time. We'll apply any payments you've already made toward your new plan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What if I'm not satisfied with the result?</h4>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer unlimited revisions on Professional plans and multiple revisions on other plans. Your satisfaction is guaranteed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="pricing-cta">
+                <div class="cta-content">
+                    <h2>Ready to Get Started?</h2>
+                    <p>Choose a plan that fits your needs and budget. All plans include our quality guarantee.</p>
+                    <div class="cta-actions">
+                        <button class="btn-primary large" onclick="showContactForm('pricing-inquiry')">
+                            <i class="fas fa-comments"></i> Get Free Consultation
+                        </button>
+                        <button class="btn-secondary large" onclick="window.location.href='/services'">
+                            <i class="fas fa-cogs"></i> View Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plan Details Modal -->
+    <div id="plan-details-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="plan-details-title">Plan Details</h3>
+                <span class="close" onclick="closeModal('plan-details-modal')">&times;</span>
+            </div>
+            <div class="modal-body" id="plan-details-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contact-pricing-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="contact-pricing-title">Get Started</h3>
+                <span class="close" onclick="closeModal('contact-pricing-modal')">&times;</span>
+            </div>
+            <form id="contact-pricing-form" class="modal-form">
+                <input type="hidden" id="selected-plan" name="selected-plan">
+                <input type="hidden" id="selected-addons" name="selected-addons">
+                
+                <div class="form-group">
+                    <label for="pricing-name">Your Name *</label>
+                    <input type="text" id="pricing-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="pricing-email">Email Address *</label>
+                    <input type="email" id="pricing-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="pricing-phone">Phone Number *</label>
+                    <input type="tel" id="pricing-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="pricing-company">Company Name</label>
+                    <input type="text" id="pricing-company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="pricing-budget">Budget Range</label>
+                    <select id="pricing-budget" name="budget">
+                        <option value="">Select Budget</option>
+                        <option value="2k-5k">KSh 2,000 - 5,000</option>
+                        <option value="5k-10k">KSh 5,000 - 10,000</option>
+                        <option value="10k-20k">KSh 10,000 - 20,000</option>
+                        <option value="20k-50k">KSh 20,000 - 50,000</option>
+                        <option value="50k+">KSh 50,000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pricing-timeline">Project Timeline</label>
+                    <select id="pricing-timeline" name="timeline">
+                        <option value="">Select Timeline</option>
+                        <option value="urgent">Urgent (1 week)</option>
+                        <option value="standard">Standard (2-3 weeks)</option>
+                        <option value="flexible">Flexible (1 month+)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pricing-message">Project Details *</label>
+                    <textarea id="pricing-message" name="message" rows="4" required placeholder="Tell us about your project..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('contact-pricing-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Send Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Pricing Page Specific Styles */
+        .pricing-toggle-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--dark-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .toggle-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .toggle-label.active {
+            color: var(--primary);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gray-dark);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: var(--primary);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+
+        .toggle-savings {
+            color: var(--success);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: var(--dark-card);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .pricing-price {
+            margin-bottom: 10px;
+        }
+
+        .price-amount {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .price-period {
+            color: var(--gray);
+            font-size: 1em;
+        }
+
+        .pricing-description {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        .pricing-features {
+            margin-bottom: 25px;
+        }
+
+        .feature-group {
+            margin-bottom: 25px;
+        }
+
+        .feature-group h4 {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .feature-group ul {
+            list-style: none;
+        }
+
+        .feature-group li {
+            padding: 8px 0;
+            color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-group li i {
+            font-size: 14px;
+        }
+
+        .feature-group li i.fa-check {
+            color: var(--success);
+        }
+
+        .feature-group li i.fa-times {
+            color: var(--danger);
+        }
+
+        .pricing-popularity {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .popularity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gray-light);
+        }
+
+        .popularity-badge.best-value {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .pricing-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn.full-width {
+            width: 100%;
+        }
+
+        /* Enterprise Section */
+        .enterprise-section {
+            background: linear-gradient(135deg, var(--dark-card), #1f1f3d);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border);
+        }
+
+        .enterprise-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .enterprise-info h3 {
+            color: var(--primary);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .enterprise-info h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .enterprise-info p {
+            color: var(--gray);
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .enterprise-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .enterprise-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light);
+        }
+
+        .enterprise-feature i {
+            color: var(--primary);
+        }
+
+        .enterprise-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-callout {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .callout-title {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .callout-subtitle {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .callout-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .callout-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        /* Addons Section */
+        .addons-section {
+            margin-bottom: 60px;
+        }
+
+        .addons-section h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            color: var(--light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .addon-card {
+            background: var(--dark-card);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .addon-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            margin: 0 auto 15px auto;
+        }
+
+        .addon-card h4 {
+            color: var(--light);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .addon-description {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .addon-pricing {
+            margin-bottom: 15px;
+        }
+
+        .addon-price {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .addon-period {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            margin-bottom: 60px;
+        }
+
+        .payment-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: var(--light);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .payment-method {
+            background: var(--dark-card);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary);
+            margin: 0 auto 15px auto;
+        }
+
+        .payment-method h4 {
+            color: var(--light);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .payment-method p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .payment-details {
+            color: var(--gray-light);
+            font-size: 0.85em;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: var(--light);
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: var(--dark-card);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-light);
+        }
+
+        .faq-question h4 {
+            color: var(--light);
+            margin-bottom: 0;
+            font-size: 1.1em;
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-answer p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .pricing-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .pricing-cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .pricing-cta p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .enterprise-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .enterprise-features {
+                grid-template-columns: 1fr;
+            }
+
+            .enterprise-actions {
+                flex-direction: column;
+            }
+
+            .addons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-large {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+
+    <script>
+        // Live Clock
+        function startLiveClock() {
+            const updateClock = () => {
+                const now = new Date();
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const day = days[now.getDay()];
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                document.getElementById('live-clock').textContent = 
+                    `${day} ${hours}:${minutes}:${seconds}`;
+            };
+            
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // Pricing Toggle
+        document.getElementById('pricing-toggle').addEventListener('change', function(e) {
+            const isAnnual = e.target.checked;
+            updatePricingDisplay(isAnnual);
+        });
+
+        function updatePricingDisplay(isAnnual) {
+            const period = isAnnual ? 'annual' : 'monthly';
+            
+            document.querySelectorAll('.price-amount').forEach(element => {
+                const monthlyPrice = element.getAttribute('data-monthly');
+                const annualPrice = element.getAttribute('data-annual');
+                element.textContent = `KSh ${isAnnual ? parseInt(annualPrice).toLocaleString() : parseInt(monthlyPrice).toLocaleString()}`;
+            });
+            
+            document.querySelectorAll('.price-period').forEach(element => {
+                const monthlyText = element.getAttribute('data-monthly');
+                const annualText = element.getAttribute('data-annual');
+                element.textContent = isAnnual ? annualText : monthlyText;
+            });
+        }
+
+        // Plan Selection
+        function selectPlan(planType) {
+            document.getElementById('selected-plan').value = planType;
+            document.getElementById('contact-pricing-title').textContent = `Get ${planType.charAt(0).toUpperCase() + planType.slice(1)} Plan`;
+            document.getElementById('contact-pricing-modal').style.display = 'block';
+        }
+
+        function selectAddon(addonType) {
+            const currentAddons = document.getElementById('selected-addons').value;
+            const addons = currentAddons ? currentAddons.split(',') : [];
+            
+            if (!addons.includes(addonType)) {
+                addons.push(addonType);
+                document.getElementById('selected-addons').value = addons.join(',');
+            }
+            
+            // Show notification
+            alert(`Added ${addonType.toUpperCase()} add-on to your selection`);
+        }
+
+        // Plan Details
+        function showPlanDetails(planType) {
+            const details = {
+                'starter': {
+                    title: 'Starter Plan Details',
+                    content: `
+                        <h4>Perfect for Small Businesses & Personal Projects</h4>
+                        <p>The Starter plan is designed for businesses and individuals who need a professional online presence without breaking the bank.</p>
+                        
+                        <div class="detail-section">
+                            <h5>Ideal For:</h5>
+                            <ul>
+                                <li>Small businesses starting their online journey</li>
+                                <li>Personal portfolios and blogs</li>
+                                <li>Local service providers</li>
+                                <li>Startups with limited budget</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-section">
+                            <h5>What You Get:</h5>
+                            <div class="feature-breakdown">
+                                <div class="feature-item">
+                                    <strong>3 Custom Pages:</strong> Home, About, Contact
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Mobile Responsive:</strong> Works perfectly on all devices
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Basic SEO:</strong> Search engine optimized structure
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Contact Form:</strong> Functional contact form with email integration
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h5>Process Timeline: 5-7 Business Days</h5>
+                            <ol>
+                                <li>Day 1-2: Planning & Design Mockups</li>
+                                <li>Day 3-5: Development & Implementation</li>
+                                <li>Day 6-7: Testing & Revisions</li>
+                                <li>Day 7: Launch & Training</li>
+                            </ol>
+                        </div>
+                    `
+                },
+                'business': {
+                    title: 'Business Plan Details',
+                    content: `
+                        <h4>Complete Solution for Growing Businesses</h4>
+                        <p>The Business plan offers everything you need to establish a strong online presence and start generating leads.</p>
+                        
+                        <div class="detail-section">
+                            <h5>ROI Calculator:</h5>
+                            <div class="roi-calculator">
+                                <p><strong>Average Results for Business Clients:</strong></p>
+                                <ul>
+                                    <li>40% increase in online inquiries</li>
+                                    <li>25% growth in customer engagement</li>
+                                    <li>60% faster response to customer queries</li>
+                                    <li>Return on investment: 3-6 months</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h5>Enhanced Features:</h5>
+                            <div class="feature-breakdown">
+                                <div class="feature-item">
+                                    <strong>5 Custom Pages:</strong> Home, About, Services, Portfolio, Contact
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Advanced Mobile Optimization:</strong> Premium mobile experience
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Comprehensive SEO:</strong> Full on-page optimization
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Lead Capture System:</strong> Convert visitors into customers
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Basic Analytics Dashboard:</strong> Track your website performance
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h5>Support & Maintenance:</h5>
+                            <p>3 months of free support ensures your website runs smoothly while you focus on your business.</p>
+                        </div>
+                    `
+                },
+                'professional': {
+                    title: 'Professional Plan Details',
+                    content: `
+                        <h4>Premium Solution for Established Businesses</h4>
+                        <p>The Professional plan is for businesses ready to dominate their market with a premium online presence.</p>
+                        
+                        <div class="detail-section">
+                            <h5>Premium Features:</h5>
+                            <div class="feature-breakdown">
+                                <div class="feature-item">
+                                    <strong>Unlimited Pages:</strong> Scale as your business grows
+                                </div>
+                                <div class="feature-item">
+                                    <strong>E-commerce Ready:</strong> Built for online stores
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Advanced SEO:</strong> Local and technical SEO optimization
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Custom Forms:</strong> Tailored to your business needs
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Social Media Automation:</strong> Streamline your social presence
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Advanced Analytics:</strong> Deep insights into your business
+                                </div>
+                                <div class="feature-item">
+                                    <strong>Payment Gateway Setup:</strong> Ready to accept online payments
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h5>Priority Treatment:</h5>
+                            <ul>
+                                <li>Dedicated project manager</li>
+                                <li>Priority in our development queue</li>
+                                <li>Direct phone support</li>
+                                <li>Extended support hours</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-section">
+                            <h5>Success Stories:</h5>
+                            <p>Our Professional plan clients typically see:</p>
+                            <ul>
+                                <li>200% increase in qualified leads</li>
+                                <li>45% reduction in customer acquisition cost</li>
+                                <li>300% ROI within the first year</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            };
+
+            const plan = details[planType] || {
+                title: 'Plan Details',
+                content: '<p>Detailed information about this plan is coming soon.</p>'
+            };
+
+            document.getElementById('plan-details-title').textContent = plan.title;
+            document.getElementById('plan-details-content').innerHTML = plan.content;
+            document.getElementById('plan-details-modal').style.display = 'block';
+        }
+
+        function showEnterpriseDetails() {
+            document.getElementById('plan-details-title').textContent = 'Enterprise Solutions';
+            document.getElementById('plan-details-content').innerHTML = `
+                <h4>Custom Solutions for Large Organizations</h4>
+                <p>Our Enterprise solutions are tailored to meet the complex needs of large businesses, government organizations, and institutions.</p>
+                
+                <div class="detail-section">
+                    <h5>Case Studies:</h5>
+                    <div class="case-study">
+                        <h6>National Retail Chain</h6>
+                        <p><strong>Challenge:</strong> Needed a unified e-commerce platform for 50+ locations</p>
+                        <p><strong>Solution:</strong> Custom multi-vendor platform with inventory synchronization</p>
+                        <p><strong>Results:</strong> 150% increase in online sales, 40% reduction in operational costs</p>
+                    </div>
+                    
+                    <div class="case-study">
+                        <h6>Government Ministry</h6>
+                        <p><strong>Challenge:</strong> Digital transformation of citizen services</p>
+                        <p><strong>Solution:</strong> Secure web portal with document management system</p>
+                        <p><strong>Results:</strong> 80% reduction in service delivery time, improved transparency</p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h5>Our Enterprise Process:</h5>
+                    <ol>
+                        <li><strong>Discovery Phase:</strong> In-depth analysis of your requirements</li>
+                        <li><strong>Solution Architecture:</strong> Design of scalable, secure systems</li>
+                        <li><strong>Development Sprint:</strong> Agile development with regular deliverables</li>
+                        <li><strong>Quality Assurance:</strong> Comprehensive testing and security audits</li>
+                        <li><strong>Deployment & Training:</strong> Smooth launch and staff training</li>
+                        <li><strong>Ongoing Support:</strong> 24/7 monitoring and maintenance</li>
+                    </ol>
+                </div>
+
+                <div class="detail-section">
+                    <h5>Technologies We Work With:</h5>
+                    <div class="technologies">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Redis</span>
+                    </div>
+                </div>
+            `;
+            document.getElementById('plan-details-modal').style.display = 'block';
+        }
+
+        // Contact Form
+        function showContactForm(context) {
+            document.getElementById('selected-plan').value = context;
+            document.getElementById('contact-pricing-title').textContent = 'Get Started';
+            document.getElementById('contact-pricing-modal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Handle Contact Form Submission
+        document.getElementById('contact-pricing-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            try {
+                // Here you would typically send the data to your server
+                // For now, we'll just show a success message
+                closeModal('contact-pricing-modal');
+                alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your project.');
+                this.reset();
+            } catch (error) {
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            startLiveClock();
+            updatePricingDisplay(false); // Start with monthly pricing
+            
+            // Hide all FAQ answers initially
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

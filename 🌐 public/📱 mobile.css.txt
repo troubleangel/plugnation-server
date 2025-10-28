@@ -1,0 +1,643 @@
+/* PLUGNATION STUDIOS - Advanced Mobile Responsive Styles */
+
+@media (max-width: 1200px) {
+    .content-area {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .sidebar {
+        width: 80px;
+        padding: 16px 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .sidebar.collapsed .logo h1,
+    .sidebar.collapsed .logo p,
+    .sidebar.collapsed .nav-link span,
+    .sidebar.collapsed .nav-badge,
+    .sidebar.collapsed .user-info,
+    .sidebar.collapsed .server-status span:last-child,
+    .sidebar.collapsed .logout-btn span {
+        display: none;
+    }
+    
+    .sidebar.collapsed .nav-link {
+        justify-content: center;
+        padding: 12px 8px;
+    }
+    
+    .sidebar.collapsed .logo h1 {
+        justify-content: center;
+        font-size: 18px;
+    }
+    
+    .sidebar.collapsed .sidebar-footer {
+        justify-content: center;
+    }
+    
+    .main-content {
+        margin-left: 80px;
+        padding: 20px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1100;
+        background: var(--primary);
+        color: white;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+    }
+    
+    .header-left {
+        text-align: center;
+    }
+    
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .header-actions {
+        order: 2;
+    }
+    
+    .timer {
+        order: 1;
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+    }
+    
+    .content-card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .card-header h3 {
+        text-align: center;
+    }
+    
+    .card-actions {
+        justify-content: center;
+    }
+    
+    .quick-actions {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .action-btn {
+        padding: 14px 12px;
+    }
+    
+    .performance-widget {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .performance-value {
+        font-size: 16px;
+    }
+    
+    /* Modal adjustments */
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        max-width: none;
+        border-radius: 16px;
+    }
+    
+    .modal-header {
+        padding: 20px;
+    }
+    
+    .modal-form {
+        padding: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
+    
+    /* Toast adjustments */
+    .toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .toast {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    /* Chart adjustments */
+    .chart-container {
+        height: 250px;
+    }
+    
+    .chart-bar-container {
+        min-width: 30px;
+    }
+    
+    /* Clients grid adjustments */
+    .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .client-card {
+        padding: 16px;
+    }
+    
+    .client-header {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    .client-details {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .client-actions {
+        align-self: stretch;
+        justify-content: space-between;
+    }
+    
+    /* Projects list adjustments */
+    .projects-list {
+        gap: 10px;
+    }
+    
+    .project-item {
+        padding: 16px;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    .project-footer {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    /* Notifications adjustments */
+    .notifications-list {
+        gap: 10px;
+    }
+    
+    .notification-item {
+        padding: 12px;
+    }
+    
+    /* Navigation adjustments for mobile */
+    .nav-links {
+        gap: 2px;
+    }
+    
+    .nav-link {
+        padding: 14px 12px;
+        border-radius: 8px;
+    }
+    
+    /* Breadcrumb adjustments */
+    .breadcrumb {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    /* Loading states */
+    .loading::after {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 12px;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+    }
+    
+    .header-left h2 {
+        font-size: 24px;
+    }
+    
+    .stats-container {
+        gap: 12px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .stat-content {
+        width: 100%;
+    }
+    
+    .content-card {
+        padding: 16px;
+    }
+    
+    .performance-widget {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    .performance-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .performance-label {
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    
+    .performance-value {
+        font-size: 14px;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        border-radius: 12px;
+    }
+    
+    .modal-header {
+        padding: 16px;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+    }
+    
+    .modal-form {
+        padding: 16px;
+    }
+    
+    .form-group {
+        margin-bottom: 16px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 16px; /* Better for mobile touch */
+    }
+    
+    /* Touch-friendly buttons */
+    .btn-primary,
+    .btn-secondary,
+    .btn-text {
+        padding: 12px 16px;
+        min-height: 44px; /* Minimum touch target size */
+        font-size: 16px;
+    }
+    
+    .header-btn {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .client-action-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .action-btn {
+        padding: 16px 12px;
+        min-height: 60px;
+    }
+    
+    /* Improved touch targets */
+    .nav-link {
+        min-height: 44px;
+    }
+    
+    .client-card,
+    .project-item,
+    .notification-item {
+        min-height: 44px;
+    }
+    
+    /* Chart improvements for very small screens */
+    .chart-container {
+        height: 200px;
+        overflow-x: auto;
+    }
+    
+    .chart-bar-container {
+        min-width: 25px;
+    }
+    
+    .chart-bar {
+        width: 20px;
+    }
+    
+    .chart-value {
+        font-size: 10px;
+    }
+    
+    .chart-label {
+        font-size: 10px;
+    }
+}
+
+/* Mobile-specific enhancements */
+@media (hover: none) and (pointer: coarse) {
+    /* Improve touch interactions */
+    .nav-link:hover {
+        transform: none;
+        background: var(--dark-hover);
+    }
+    
+    .stat-card:hover {
+        transform: none;
+    }
+    
+    .client-card:hover,
+    .project-item:hover,
+    .notification-item:hover {
+        transform: none;
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-text:hover {
+        transform: none;
+    }
+    
+    .action-btn:hover {
+        transform: none;
+    }
+    
+    /* Add active states for touch */
+    .nav-link:active,
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-text:active,
+    .action-btn:active,
+    .client-card:active,
+    .project-item:active,
+    .notification-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .header-btn:active {
+        transform: scale(0.9);
+    }
+}
+
+/* Dark mode and system preferences */
+@media (prefers-color-scheme: dark) {
+    .modal-content {
+        background: var(--dark-card);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Orientation-specific styles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .sidebar.mobile-open {
+        width: 250px;
+    }
+    
+    .main-content {
+        padding: 12px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .content-area {
+        grid-template-columns: 1fr;
+    }
+    
+    .performance-widget {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* High-resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .stat-icon,
+    .notification-icon,
+    .client-action-btn,
+    .header-btn {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Print styles */
+@media print {
+    .sidebar,
+    .header-actions,
+    .timer,
+    .performance-widget,
+    .btn-primary,
+    .btn-secondary,
+    .action-btn {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 0;
+    }
+    
+    .content-card {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .stat-card {
+        break-inside: avoid;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Mobile menu toggle button (add to HTML) */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Utility classes for mobile */
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+    
+    .desktop-only {
+        display: none;
+    }
+}
+
+/* Enhanced focus styles for accessibility */
+@media (max-width: 768px) {
+    .nav-link:focus,
+    .btn-primary:focus,
+    .btn-secondary:focus,
+    .action-btn:focus,
+    .header-btn:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+    
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+    .stat-card,
+    .content-card,
+    .client-card,
+    .project-item,
+    .notification-item {
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+    
+    /* Reduce animations on low-powered devices */
+    @media (prefers-reduced-data: reduce) {
+        .stat-card,
+        .content-card {
+            transition: none;
+        }
+    }
+}
