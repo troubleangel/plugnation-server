@@ -1,227 +1,436 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const helmet = require('helmet');
-const compression = require('compression');
-const bodyParser = require('body-parser');
-const rateLimit = require('express-rate-limit');
-const moment = require('moment');
-const path = require('path');
+// 🚀 PLUGNATION SERVER — GOD MODE 2026+ SELF-HEALING CLOUD EDITION (LIVE GOD MODE)
+import dotenv from "dotenv";
+dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+import cluster from "cluster";
+import os from "os";
+import express from "express";
+import { createServer } from "http";
+import { Server as IOServer } from "socket.io";
+import mongoose from "mongoose";
+import cors from "cors";
+import helmet from "helmet";
+import compression from "compression";
+import bodyParser from "body-parser";
+import rateLimit from "express-rate-limit";
+import moment from "moment";
+import chalk from "chalk";
+import morgan from "morgan";
+import cron from "node-cron";
+import { createClient } from "redis";
+import path from "path";
+import { fileURLToPath } from "url";
+import { v4 as uuidv4 } from "uuid";
 
-// 🧠 Security Setup
-app.use(helmet());
-app.use(cors());
-app.use(compression());
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+// Routes
+import apiRoutes from "./routes/apiRoutes.js";
+import hostingRoutes from './routes/hostingRoutes.js';
+import monetizationRoutes from "./routes/monetizationRoutes.js";
+import mpesaRoutes from "./routes/mpesaRoutes.js";
+import usersRoutes from "./routes/usersRoutes.js";
+import plansRoutes from "./routes/plansRoutes.js";
+import ticketsRoutes from "./routes/ticketsRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
 
-// 🛡️ Rate Limiter
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 150,
-});
-app.use(limiter);
+// Models
+import Client from "./models/Client.js";
+import Payment from "./models/Payment.js";
+import Hosting from "./models/Hosting.js";
+import Notification from "./models/Notification.js";
+import Stat from "./models/Stat.js";
 
-// 🧱 Static files
-app.use(express.static('public', {
-  maxAge: '1d',
-  etag: true
-}));
+// ===================================================
+// Constants
+// ===================================================
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// ⚙️ Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('✅ MongoDB Connected Successfully'))
-  .catch(err => console.error('❌ MongoDB Connection Error:', err));
+// ===================================================
+// 🧠 MASTER PROCESS
+// ===================================================
+if (cluster.isPrimary) {
+  process.title = "PlugNation-Master";
+  const cores = Math.max(1, os.cpus().length);
+  console.log(chalk.yellow(`🧠 Master PID: ${process.pid}`));
+  console.log(chalk.green(`💪 Launching ${cores} worker(s)...`));
 
-// 📦 Define Schemas
-const clientSchema = new mongoose.Schema({
-  name: String,
-  tier: String,
-  joined: String,
-  status: String,
-  email: String,
-  phone: String,
-  createdAt: { type: Date, default: Date.now }
-});
+  const REDIS_ENABLED = String(process.env.REDIS_ENABLED || "false").toLowerCase() === "true";
+  let masterRedis = null;
+  let redisErrorLogged = false;
 
-const projectSchema = new mongoose.Schema({
-  title: String,
-  clientId: String,
-  description: String,
-  budget: Number,
-  deadline: String,
-  status: String,
-  progress: Number,
-  createdAt: { type: Date, default: Date.now }
-});
+  async function connectRedis() {
+    if (!REDIS_ENABLED) {
+      console.log(chalk.yellow("⚠️ Redis disabled — running in stub cache mode"));
+      return;
+    }
+    try {
+      const url = process.env.REDIS_URL || "redis://127.0.0.1:6379";
+      masterRedis = createClient({ url, socket: { connectTimeout: 5000 } });
+      masterRedis.on("error", (e) => {
+        if (!redisErrorLogged) {
+          redisErrorLogged = true;
+          console.log(chalk.red("⚠️ Redis connection error:"), e.message);
+        }
+      });
+      await masterRedis.connect();
+      console.log(chalk.green("⚡ Master Redis connected"));
+    } catch (err) {
+      console.log(chalk.yellow("⚠️ Redis failed to connect — retrying in 5s..."));
+      setTimeout(connectRedis, 5000);
+    }
+  }
+  connectRedis();
 
-const invoiceSchema = new mongoose.Schema({
-  invoiceNumber: String,
-  clientId: String,
-  projectId: String,
-  amount: Number,
-  description: String,
-  dueDate: String,
-  status: String,
-  createdAt: { type: Date, default: Date.now }
-});
+  // Spawn workers
+  for (let i = 0; i < cores; i++) cluster.fork();
 
-const analyticsSchema = new mongoose.Schema({
-  visits: Number,
-  pending: Number,
-  newClients: Number,
-  payments: Number,
-  revenue: Number,
-  chartData: [Number],
-  monthlyGrowth: Number,
-  conversionRate: Number,
-});
+  // Redis IPC
+  cluster.on("message", async (worker, msg) => {
+    if (!msg || !msg.__redis_req) return;
+    const { reqId, op, key, value } = msg;
+    const reply = { __redis_res: true, reqId, ok: false };
+    try {
+      if (!masterRedis) reply.ok = true;
+      else if (op === "get") reply.result = await masterRedis.get(key), (reply.ok = true);
+      else if (op === "set") await masterRedis.set(key, value), (reply.ok = true);
+      else if (op === "del") await masterRedis.del(key), (reply.ok = true);
+    } catch (e) {
+      reply.ok = false;
+      reply.error = e.message;
+    }
+    worker.send(reply);
+  });
 
-// 💾 Mongo Models
-const Client = mongoose.model('Client', clientSchema);
-const Project = mongoose.model('Project', projectSchema);
-const Invoice = mongoose.model('Invoice', invoiceSchema);
-const Analytics = mongoose.model('Analytics', analyticsSchema);
+  cluster.on("exit", (worker) => {
+    console.log(chalk.red(`❌ Worker ${worker.process.pid} crashed — restarting...`));
+    cluster.fork();
+  });
 
-// 🔹 ROUTES
+  process.on("SIGINT", async () => {
+    console.log("🛑 Master shutting down gracefully...");
+    try { if (masterRedis) await masterRedis.quit(); } catch {}
+    for (const id in cluster.workers) cluster.workers[id].kill();
+    process.exit(0);
+  });
+}
 
-// DASHBOARD
-app.get('/api/dashboard', async (req, res) => {
-  try {
-    const clients = await Client.find();
-    const projects = await Project.find();
-    const invoices = await Invoice.find();
-    const analytics = await Analytics.findOne();
+// ===================================================
+// 🚀 WORKER PROCESS
+// ===================================================
+else {
+  process.title = `PlugNation-Worker-${process.pid}`;
 
-    res.json({
-      clients,
-      projects,
-      invoices,
-      analytics,
-      performance: {
-        uptime: process.uptime(),
-        memory: process.memoryUsage(),
-        timestamp: moment().format('YYYY-MM-DD HH:mm:ss')
+  const app = express();
+  const httpServer = createServer(app);
+  const io = new IOServer(httpServer, { cors: { origin: "*" } });
+
+  // Middleware
+  app.use(cors());
+  app.use(helmet());
+  app.use(compression());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(morgan("dev"));
+  app.use(express.static(path.join(__dirname, "public")));
+
+  // Rate Limiter
+  app.use(rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 300,
+    message: "⏳ Too many requests — chill, genius.",
+  }));
+
+  // MongoDB connection
+  const connectDB = async () => {
+    try {
+      await mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/plugnation");
+      console.log(chalk.green(`🧩 MongoDB connected (pid ${process.pid})`));
+    } catch (err) {
+      console.log(chalk.red("MongoDB connect failed — retrying in 5s..."));
+      setTimeout(connectDB, 5000);
+    }
+  };
+  connectDB();
+
+  // Redis IPC helper
+  function redisRequest(op, key, value) {
+    return new Promise((resolve) => {
+      const reqId = uuidv4();
+      const timeout = setTimeout(() => resolve({ ok: false, error: "timeout" }), 4000);
+      process.once("message", (msg) => {
+        if (!msg?.__redis_res || msg.reqId !== reqId) return;
+        clearTimeout(timeout);
+        resolve(msg);
+      });
+      process.send?.({ __redis_req: true, reqId, op, key, value });
+    });
+  }
+
+  // Homepage & Health
+  app.get("/", (_, res) => {
+    if (process.env.NODE_ENV === "production") res.redirect(process.env.BASE_URL);
+    else res.sendFile(path.join(__dirname, "public", "index.html"));
+  });
+  app.get("/health", (_, res) => res.json({ status: "OK", pid: process.pid, time: new Date() }));
+
+  // =============================
+  // API Routes — FULL LIVE GOD MODE
+  // =============================
+  app.use("/api", apiRoutes);                    // General API
+  app.use("/api", hostingRoutes);                // Hosting / live site API
+  app.use("/api/payments", monetizationRoutes); // Live monetization
+  app.use("/api/payments/mpesa", mpesaRoutes);  // MPesa integration
+  app.use("/api/users", usersRoutes);           // Auth/users
+  app.use("/api/plans", plansRoutes);           // Plans CRUD
+  app.use("/api/tickets", ticketsRoutes);       // Tickets CRUD
+  app.use("/api/analytics", analyticsRoutes);   // Analytics endpoint
+
+  // =============================
+  // 🚀 LIVE DATA ROUTES - GOD MODE
+  // =============================
+
+  // Live stats endpoint (compatible with your existing /api/stats)
+  app.get("/api/stats", async (req, res) => {
+    try {
+      const statsDoc = await Stat.findOne();
+      const base = statsDoc?.toObject?.() || { visits: 642, pending: 387, newClients: 112, payments: 53, revenue: 0 };
+
+      const clientsCount = await Client.countDocuments();
+      const pendingPayments = await Payment.countDocuments({ status: 'pending' });
+      const activeSubscriptions = await Client.countDocuments({ subscriptionStatus: 'Active' });
+
+      res.json({
+        ...base,
+        clients: clientsCount,
+        pendingPayments,
+        activeSubscriptions,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error('Stats error:', error);
+      res.status(500).json({ error: 'Failed to fetch stats' });
+    }
+  });
+
+  // Live clients endpoint
+  app.get("/api/clients", async (req, res) => {
+    try {
+      const clients = await Client.find()
+        .sort({ joined: -1 })
+        .limit(10)
+        .select('name tier subscriptionStatus joined');
+      
+      const formattedClients = clients.map(client => ({
+        name: client.name,
+        tier: client.tier,
+        joined: moment(client.joined).format('MMM YYYY'),
+        status: client.subscriptionStatus
+      }));
+      
+      res.json(formattedClients);
+    } catch (error) {
+      console.error('Clients error:', error);
+      res.status(500).json({ error: 'Failed to fetch clients' });
+    }
+  });
+
+  // Live notifications endpoint
+  app.get("/api/notifications", async (req, res) => {
+    try {
+      const notifications = await Notification.find()
+        .sort({ time: -1 })
+        .limit(10);
+      
+      const formattedNotifications = notifications.map(notif => ({
+        title: notif.title,
+        description: notif.message,
+        time: moment(notif.time).fromNow(),
+        type: notif.type,
+        status: 'pending'
+      }));
+      
+      res.json(formattedNotifications);
+    } catch (error) {
+      console.error('Notifications error:', error);
+      res.status(500).json({ error: 'Failed to fetch notifications' });
+    }
+  });
+
+  // Serve live dashboard
+  app.get("/live-dashboard", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "live-dashboard.html"));
+  });
+
+  // 🚀 ENHANCED SOCKET.IO LIVE DATA GOD MODE
+  io.on("connection", (socket) => {
+    console.log(chalk.green(`⚡ Socket connected: ${socket.id} (pid ${process.pid})`));
+
+    // Send initial live data
+    (async () => {
+      try {
+        const [statsDoc, clients, notifications] = await Promise.all([
+          Stat.findOne(),
+          Client.find().sort({ joined: -1 }).limit(5),
+          Notification.find().sort({ time: -1 }).limit(5)
+        ]);
+
+        const stats = statsDoc || { visits: 642, pending: 387, newClients: 112, payments: 53, revenue: 0 };
+        socket.emit("liveStats", stats);
+        socket.emit("clientsUpdate", clients);
+        socket.emit("notificationsUpdate", notifications);
+        socket.emit("systemStatus", { 
+          status: "connected", 
+          pid: process.pid,
+          timestamp: new Date().toISOString()
+        });
+      } catch (error) {
+        console.error('Initial data error:', error);
+      }
+    })();
+
+    // Live data update handlers
+    socket.on("requestStatsUpdate", async () => {
+      try {
+        const stats = (await Stat.findOne()) || {};
+        socket.emit("statsUpdate", stats);
+      } catch (error) {
+        console.error('Stats update error:', error);
       }
     });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
-// CLIENTS
-app.get('/api/clients', async (req, res) => {
-  const clients = await Client.find();
-  res.json(clients);
-});
-
-app.post('/api/clients', async (req, res) => {
-  try {
-    const { name, tier, email, phone } = req.body;
-    const newClient = await Client.create({
-      name,
-      tier,
-      email,
-      phone,
-      joined: moment().format('MMM D, YYYY'),
-      status: 'Active'
+    socket.on("addLiveClient", async (clientData) => {
+      try {
+        const newClient = new Client({
+          ...clientData,
+          subscriptionStatus: 'Active',
+          joined: new Date()
+        });
+        await newClient.save();
+        
+        // Notify all connected clients
+        const clients = await Client.find().sort({ joined: -1 }).limit(5);
+        io.emit("clientsUpdate", clients);
+        
+        // Create notification
+        const notification = new Notification({
+          type: "new-client",
+          title: "NEW CLIENT",
+          message: `${clientData.name} has joined PlugNation`,
+          time: new Date()
+        });
+        await notification.save();
+        io.emit("notificationsUpdate", [notification]);
+        
+      } catch (error) {
+        console.error('Add client error:', error);
+        socket.emit("error", { message: "Failed to add client" });
+      }
     });
-    res.json(newClient);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
-// PROJECTS
-app.get('/api/projects', async (req, res) => {
-  const projects = await Project.find();
-  res.json(projects);
-});
-
-app.post('/api/projects', async (req, res) => {
-  try {
-    const project = await Project.create(req.body);
-    res.json(project);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// INVOICES
-app.get('/api/invoices', async (req, res) => {
-  const invoices = await Invoice.find();
-  res.json(invoices);
-});
-
-app.post('/api/invoices', async (req, res) => {
-  try {
-    const { clientId, projectId, amount, description } = req.body;
-    const invoice = await Invoice.create({
-      invoiceNumber: `INV-${moment().format('YYMMDD')}-${Math.random().toString(36).substr(2, 5).toUpperCase()}`,
-      clientId,
-      projectId,
-      amount,
-      description,
-      dueDate: moment().add(15, 'days').format('YYYY-MM-DD'),
-      status: 'Pending'
+    socket.on("updateLiveStats", async (newStats) => {
+      try {
+        let stats = await Stat.findOne();
+        if (stats) {
+          Object.assign(stats, newStats);
+          await stats.save();
+        } else {
+          stats = await Stat.create(newStats);
+        }
+        io.emit("statsUpdate", stats);
+      } catch (error) {
+        console.error('Update stats error:', error);
+      }
     });
-    res.json(invoice);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
-// ANALYTICS
-app.post('/api/analytics/update', async (req, res) => {
-  try {
-    const { field, value } = req.body;
-    const analytics = await Analytics.findOne() || new Analytics();
-    analytics[field] = value;
-    await analytics.save();
-    res.json(analytics);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// CONTACT
-app.post('/api/contact', async (req, res) => {
-  try {
-    console.log('📩 Contact form received:', req.body);
-    res.json({ success: true, message: 'Your message has been received!' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// HEALTH CHECK
-app.get('/health', (req, res) => {
-  res.json({
-    status: 'OK',
-    uptime: process.uptime(),
-    timestamp: moment().format('YYYY-MM-DD HH:mm:ss')
+    socket.on("disconnect", () => {
+      console.log(chalk.yellow(`🔌 Socket disconnected: ${socket.id}`));
+    });
   });
-});
 
-// FRONTEND ROUTES
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
-app.get('/services', (req, res) => res.sendFile(path.join(__dirname, 'services.html')));
-app.get('/pricing', (req, res) => res.sendFile(path.join(__dirname, 'pricing.html')));
+  // 🚀 ENHANCED CRON: REAL-TIME DATA SYNC
+  cron.schedule("*/5 * * * * *", async () => { // Every 5 seconds for live updates
+    try {
+      const totalClients = await Client.countDocuments();
+      const pendingCount = await Payment.countDocuments({ status: 'pending' });
+      const revenueResult = await Payment.aggregate([
+        { $match: { status: 'completed' } },
+        { $group: { _id: null, total: { $sum: "$amount" } } }
+      ]);
 
-// GLOBAL ERROR HANDLER
-app.use((err, req, res, next) => {
-  console.error('🔥 Error:', err);
-  res.status(500).json({ error: 'Server Error', details: err.message });
-});
+      let stats = await Stat.findOne();
+      if (!stats) {
+        stats = await Stat.create({
+          visits: 642,
+          pending: pendingCount,
+          newClients: totalClients,
+          payments: await Payment.countDocuments({ status: 'completed' }),
+          revenue: revenueResult[0]?.total || 0,
+        });
+      } else {
+        stats.visits += Math.floor(Math.random() * 3);
+        stats.pending = pendingCount;
+        stats.newClients = totalClients;
+        stats.payments = await Payment.countDocuments({ status: 'completed' });
+        stats.revenue = revenueResult[0]?.total || 0;
+        await stats.save();
+      }
 
-// START SERVER
-app.listen(PORT, () => {
-  console.log(`🚀 PlugNation Server running on http://localhost:${PORT}`);
-  console.log(`🧠 Mode: ${process.env.NODE_ENV}`);
-});
+      io.emit("liveStats", stats);
+      
+      // Check for new notifications
+      const newNotifications = await Notification.find()
+        .sort({ time: -1 })
+        .limit(3);
+      
+      if (newNotifications.length > 0) {
+        io.emit("notificationsUpdate", newNotifications);
+      }
+
+    } catch (error) {
+      console.error('Cron job error:', error);
+    }
+  });
+
+  // Daily maintenance (keep your existing daily cron)
+  cron.schedule("0 0 * * *", async () => {
+    console.log(chalk.blue(`[${moment().format("YYYY-MM-DD HH:mm")}] Daily maintenance running...`));
+
+    // 1️⃣ Auto-downgrade expired clients
+    const now = new Date();
+    const expiredClients = await Client.find({ subscriptionStatus: "Active", subscriptionExpiry: { $lte: now } });
+    for (let client of expiredClients) {
+      client.subscriptionStatus = "None";
+      client.tier = "Free";
+      await client.save();
+      io.emit("tierChanged", client);
+      await Notification.create({
+        type: "system",
+        title: `${client.name} downgraded due to expiry`,
+        message: "",
+      });
+    }
+
+    // 2️⃣ Update global stats
+    const paymentsCount = await Payment.countDocuments();
+    const revenueSum = await Payment.aggregate([{ $group: { _id: null, total: { $sum: "$amount" } } }]);
+    let stats = await Stat.findOne();
+    if (!stats) stats = await Stat.create({ payments: paymentsCount, revenue: revenueSum[0]?.total || 0 });
+    else { stats.payments = paymentsCount; stats.revenue = revenueSum[0]?.total || 0; await stats.save(); }
+    io.emit("liveStats", stats);
+  });
+
+  // Start Server
+  const PORT = parseInt(process.env.PORT || "8080", 10);
+  httpServer.listen(PORT, () => {
+    console.log(chalk.cyan(`🚀 PlugNation Server active on port ${PORT} | PID ${process.pid}`));
+  });
+
+  // Graceful shutdown
+  process.on("SIGINT", () => {
+    console.log(chalk.yellow(`Worker ${process.pid} shutting down...`));
+    process.exit(0);
+  });
+
+  // Attach io for live events in routes
+  app.set("io", io);
+}
