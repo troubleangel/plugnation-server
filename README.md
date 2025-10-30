@@ -34,6 +34,20 @@ A lightweight Node.js + Express server for personal projects, experiments, and a
 
 ---
 
+## 🩺 Health Checks & Monitoring
+
+**Redis Health Endpoint:**
+- `GET /api/redis-health` will check if Redis is enabled and working (set/get/del test key).
+- Returns JSON: `{ enabled: true, ok: true, detail: 'ping' }` if fine, or reports any error otherwise.
+- Use this to debug Redis cluster connectivity if dashboard stats or API cache seem stale or broken.
+
+**Interpreting Results:**
+- `enabled: false` → Redis IPC cluster/cache not wired, running in direct Mongo mode only.
+- `ok: false` → Redis misconfigured, not running, or unreachable by cluster.
+- `ok: true` → Redis is powering live cache, maximizing dashboard/API speed.
+
+---
+
 ## ✅ Post-God Mode Upgrade Verification & QA Checklist
 
 Recent updates:

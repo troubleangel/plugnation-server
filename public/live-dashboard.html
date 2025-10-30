@@ -185,8 +185,25 @@
             <div class="dashboard-nav">
                 <a href="/pricing.html" class="dashboard-link" style="margin-left:30px;color:#00ff88;font-weight:bold;text-decoration:none;font-size:1.1em;border:1px solid #00ff88;border-radius:8px;padding:6px 16px;">💰 Pricing</a>
                 <a href="/services.html" class="dashboard-link" style="margin-left:10px;color:#40b0ff;font-weight:bold;text-decoration:none;font-size:1.1em;border:1px solid #40b0ff;border-radius:8px;padding:6px 16px;">🛠 Services</a>
+                <span id="redisHealth" style="margin-left:28px;font-weight:bold;vertical-align:middle;"></span>
             </div>
         </div>
+        <script>
+        async function updateRedisHealth() {
+          try {
+            const status = await fetch('/api/redis-health').then(r=>r.json())
+            const el = document.getElementById('redisHealth');
+            if(!el) return;
+            if(!status.enabled) el.innerHTML = '<span title="Redis not enabled, fallback to Mongo only." style="color:#ffaa00;">⚠️ REDIS DISABLED</span>';
+            else if(status.ok) el.innerHTML = '<span title="Redis cluster/cache detected healthy. Dashboard is hot-cached!" style="color:#00ff66;">✔️ REDIS OK</span>';
+            else el.innerHTML = '<span title="Redis cluster/cache error: '+(status.error||'unknown')+'" style="color:#ff355b;">❌ REDIS ERROR</span>';
+          } catch(e){
+            const el = document.getElementById('redisHealth');
+            if(el) el.innerHTML = '<span title="Cannot contact /api/redis-health">❌ REDIS ERROR</span>';
+          }
+        }
+        setInterval(updateRedisHealth, 60000); updateRedisHealth();
+        </script>
 
         <div class="stats-grid" id="statsGrid">
             <!-- Stats populated by JavaScript -->

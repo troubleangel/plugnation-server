@@ -49,6 +49,12 @@ router.post('/', async (req, res) => {
     stats.revenue += amount;
     await stats.save();
 
+    // After saving payment, client, stats
+    const redisDel = req.app.get('redisDel');
+    await redisDel('stats');
+    await redisDel('clients');
+    await redisDel('notifications');
+
     // Emit live Socket.IO event
     req.app.get('io')?.emit('paymentSuccess', { client, amount });
 

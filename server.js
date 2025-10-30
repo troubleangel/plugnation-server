@@ -94,6 +94,7 @@ if (cluster.isPrimary) {
       else if (op === "get") reply.result = await masterRedis.get(key), (reply.ok = true);
       else if (op === "set") await masterRedis.set(key, value), (reply.ok = true);
       else if (op === "del") await masterRedis.del(key), (reply.ok = true);
+      else if (op === "expire") await masterRedis.expire(key, value), (reply.ok = true);
     } catch (e) {
       reply.ok = false;
       reply.error = e.message;
@@ -165,6 +166,24 @@ else {
       process.send?.({ __redis_req: true, reqId, op, key, value });
     });
   }
+
+  // Redis CACHE helpers for all routes
+  app.set('redisGet', async (key) => {
+    const res = await redisRequest('get', key);
+    if(res.ok && res.result != null) {
+      console.log(`REDIS CACHE HIT: ${key}`)
+    } else {
+      console.log(`REDIS CACHE MISS: ${key}`)
+    }
+    return res.ok ? res.result : null;
+  });
+  app.set('redisSet', async (key, value, ttl = 600) => {
+    await redisRequest('set', key, value);
+    if (ttl > 0) await redisRequest('expire', key, ttl); // Add 'expire' support to master
+  });
+  app.set('redisDel', async (key) => {
+    await redisRequest('del', key);
+  });
 
   // Homepage & Health
   app.get("/", (_, res) => {

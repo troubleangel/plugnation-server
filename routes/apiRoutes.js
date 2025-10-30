@@ -18,9 +18,25 @@ async function getStats() {
 // GET Dashboard
 router.get('/dashboard', async (req, res) => {
   try {
-    const clients = await Client.find();
-    const notifications = await Notification.find().sort({ time: -1 }).limit(10);
-    const stats = await getStats();
+    const redisGet = req.app.get('redisGet'), redisSet = req.app.get('redisSet');
+    let stats = await redisGet('stats');
+    let clients = await redisGet('clients');
+    let notifications = await redisGet('notifications');
+    if (stats) stats = JSON.parse(stats);
+    if (clients) clients = JSON.parse(clients);
+    if (notifications) notifications = JSON.parse(notifications);
+    if (!stats) {
+      stats = await getStats();
+      await redisSet('stats', JSON.stringify(stats));
+    }
+    if (!clients) {
+      clients = await Client.find();
+      await redisSet('clients', JSON.stringify(clients));
+    }
+    if (!notifications) {
+      notifications = await Notification.find().sort({ time: -1 }).limit(10);
+      await redisSet('notifications', JSON.stringify(notifications));
+    }
     res.json({ clients, analytics: stats, notifications });
   } catch (e) {
     console.error(e);
@@ -92,5 +108,23 @@ router.put('/clients/:id/tier',
 });
 
 // (payments route removed; handled under /api/payments)
+
+// Redis Health Endpoint
+router.get('/redis-health', async (req, res) => {
+  const redisGet = req.app.get('redisGet'), redisSet = req.app.get('redisSet'), redisDel = req.app.get('redisDel');
+  let status = { enabled: !!redisGet };
+  try {
+    if (!redisGet) throw new Error('Redis not enabled');
+    await redisSet('test', 'ping', 10);
+    const val = await redisGet('test');
+    await redisDel('test');
+    status.ok = val === 'ping';
+    status.detail = val;
+  } catch(e) {
+    status.ok = false;
+    status.error = e.message;
+  }
+  res.json(status);
+});
 
 export default router;
